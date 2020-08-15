@@ -14,7 +14,8 @@
     "http-errors": "~1.6.3",
     "moment": "^2.27.0",
     "mongodb": "^3.6.0",
-    "morgan": "~1.9.1"
+    "morgan": "~1.9.1",
+    "objectid": "^3.2.1"
   },
   "main": "app.js",
   "author": "",
