@@ -2,77 +2,71 @@
   <div class="card-body">
     <h1 class="card-title">BREAD(Browse, Read, Edit, Add, Delete)</h1>
     <h3 class="card-title">Filters</h3>
-    <form>
+    <form action=""  method="get">
       <div class="form-group row">
-        <label for="chekId" class="col-sm-2 col-form-label">
-          <input class="form-check-input" type="checkbox" value="" id="chekId">
-          ID
-        </label>
-        <div class="col-sm-10">
-          <input type="number" class="form-control" id="id" placeholder="ID">
-        </div>
-      </div>
-
-      <div class="form-group row">
-        <label for="chekString" class="col-sm-2 col-form-label">
-          <input class="form-check-input" type="checkbox" value="" id="chekString">
+        <label for="string" class="col-sm-2 col-form-label">
+          <input class="form-check-input" name="checkString" type="checkbox" id="string">
           String
         </label>
         <div class="col-sm-10">
-          <input type="text" class="form-control" id="string" placeholder="String">
+          <input type="text" name="string" class="form-control" id="string" placeholder="String">
         </div>
       </div>
 
       <div class="form-group row">
-        <label for="chekInteger" class="col-sm-2 col-form-label">
-          <input class="form-check-input" type="checkbox" value="" id="chekInteger">
+        <label for="integer" class="col-sm-2 col-form-label">
+          <input class="form-check-input" name="checkInteger" type="checkbox" id="integer">
           Integer
         </label>
         <div class="col-sm-10">
-          <input type="number" class="form-control" id="integer" placeholder="Integer">
+          <input type="number" name="integer" class="form-control" id="integer" placeholder="Integer">
         </div>
       </div>
 
       <div class="form-group row">
-        <label for="chekFloat" class="col-sm-2 col-form-label">
-          <input class="form-check-input" type="checkbox" value="" id="chekFloat">
+        <label for="float" class="col-sm-2 col-form-label">
+          <input class="form-check-input" name="checkFloat" type="checkbox" id="float">
           Float
         </label>
         <div class="col-sm-10">
-          <input type="number" class="form-control" id="float" placeholder="Float">
+          <input type="text" name="float" class="form-control" id="float" placeholder="Float">
         </div>
       </div>
 
       <div class="form-group row">
-        <label for="chekDate" class="col-sm-2 col-form-label">
-          <input class="form-check-input" type="checkbox" value="" id="chekDate">
+        <label for="date" class="col-sm-2 col-form-label">
+          <input class="form-check-input" name="checkDate" type="checkbox" id="date">
           Date
         </label>
         <div class="col-sm-2">
-          <input type="date" class="form-control" id="date" placeholder="start date">
+          <input type="date" name="startDate" class="form-control" id="date" placeholder="start date">
           <p>to</p>
-          <input type="date" class="form-control" id="date" placeholder="end date">
+          <input type="date" name="endDate" class="form-control" id="date" placeholder="end date">
         </div>
       </div>
 
       <div class="form-group row">
-        <label for="chekBoolean" class="col-sm-2 col-form-label">
-          <input class="form-check-input" type="checkbox" value="" id="chekBoolean">
+        <label for="boolean" class="col-sm-2 col-form-label">
+          <input class="form-check-input" name="checkBoolean" type="checkbox" id="boolean">
           Boolean
         </label>
         <div class="col-sm-10">
-          <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+          <select class="custom-select mr-sm-2" name="bool" id="boolean">
             <option selected disabled>Choose the boolean...</option>
-            <option value="1">True</option>
-            <option value="2">False</option>
+            <option name="bool" value="true">True</option>
+            <option name="bool" value="false">False</option>
           </select>
         </div>
       </div>
 
       <div class="form-group row">
         <div class="col-sm-10">
-          <button type="submit" class="btn btn-dark">Search</button>
-          <button type="submit" class="btn btn-dark">reset</button>
+          <button type="submit" class="btn btn-dark" value="clicked">Search</button>
+
+          <a href="/">
+            <button type="submit" class="btn btn-dark">reset</button>
+          </a>
+          
         </div>
       </div>
     </form>

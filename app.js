@@ -7,36 +7,36 @@ var logger = require('morgan');
 const MongoClient = require('mongodb').MongoClient;
 const assert = require('assert');
 
-
 var usersRouter = require('./routes/users');
 var app = express();
 
+
+
+app.use('/users', usersRouter);
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
+app.use(express.static(path.join(__dirname, 'public')));
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
-
-app.use('/users', usersRouter);
-
 
 
 // Connection URL
 const url = 'mongodb://localhost:27017';
+
 // Create a new MongoClient
-const client = new MongoClient(url);
+const client = new MongoClient(url, { useUnifiedTopology: true });
 
 // Use connect method to connect to the Server
 client.connect(function (err) {
   assert.equal(null, err);
   console.log("Connected successfully to server");
   // Database Name
-  const dbName = 'data';
+  const dbName = 'datadb';
   // coll for 'data' collection
   const coll = 'bread'; 
   const db = client.db(dbName);

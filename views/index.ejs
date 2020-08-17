@@ -1,54 +1,66 @@
 <%- include('./partials/header')%>
 <%- include('./search')%>
 <div class="card2">
-    <div class="card-body tb">
-        <div class="table">
-            <table class="table table-striped">
-                <thead>
-                    <tr>
-                        <th scope="col">ID</th>
-                        <th scope="col">String</th>
-                        <th scope="col">Integer</th>
-                        <th scope="col">Float</th>
-                        <th scope="col">Date</th>
-                        <th scope="col">Boolean</th>
-                        <th scope="col">Action</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
-                        <td>@mdo</td>
-                        <td>@mdo</td>
-                        <td>@mdo</td>
-                        <td>
-                            <a href="#" class="btn btn-success">Edit</a>
-                            <a href="#" class="btn btn-danger">Delete</a>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-            <!-- end table -->
+  <div class="card-body tb">
+    <form action="" method="GET">
+    <div class="table">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">String</th>
+            <th scope="col">Integer</th>
+            <th scope="col">Float</th>
+            <th scope="col">Date</th>
+            <th scope="col">Boolean</th>
+            <th scope="col">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% result.forEach((item, index) => { %>
+          <tr>
+            <td><%= item.string %></td>
+            <td><%= item.integer %></td>
+            <td><%= item.float %></td>
+            <td><%= moment(item.date).format("DD-MMMM-YYYY") %></td>
+            <td><%= item.boolean == 1 ? "true" : "false" %></td>
+            <td>
+              <a href="/edit/<%= item._id %>">
+                <button type="button" class="btn btn-success">Edit</button>
+              </a>
+              <a href="/delete/<%= item._id %>">
+                <button type="button" class="btn btn-danger"
+                  onclick="javascript: return confirm('Yakin data akan dihapus?')">Delete</button>
+              </a>
+            </td>
+          </tr>
+          <% }) %>
+        </tbody>
+      </table>
 
-            <!-- pagination -->
-            <nav aria-label="Page navigation example mt-2">
-                <ul class="pagination">
-                    <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-                    <li class="page-item"><a class="page-link" href="#">1</a></li>
-                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                    <li class="page-item"><a class="page-link" href="#">Next</a></li>
-                </ul>
-            </nav>
-            <!-- end pagination -->
+      <!-- end table -->
 
-            <div class="add">
-                <a class="btn btn-primary" href="/add" role="button" data-toggle="modal" data-target="#addModal">Add</a>
-            </div>
+      <!-- pagination -->
+      <nav aria-label="Page navigation example mt-2">
+        <ul class="pagination">
+          <li class="page-item <%= page==1 ? 'disabled' : '' %>"><a class="page-link"
+              href="<%= url.replace(`page=${page}`, `page=${parseInt(page)-1}`)%>">Previous</a></li>
+          <%for (let i=1; i <= pages; i++ ){%>
+          <li class="page-item <%= (i == page) ? 'active' : '' %> "> <a class="page-link"
+              href="<%= url.replace(`page=${page}`, `page=${i}`)%>"><%= i%></a></li>
+          <%}%>
+                    <li class="page-item <%= page==pages ? 'disabled' : '' %>"> <a class="page-link disabled"
+            href="<%= url.replace(`page=${page}`, `page=${parseInt(page)+1}`)%>">Next</a></li>
+        </ul>
+        </ul>
+      </nav>
+      <!-- end pagination -->
 
-        </div>
+      <div class="add">
+        <a class="btn btn-primary" href="/add">Add</a>
+      </div>
+
     </div>
+    </form>
+  </div>
 </div>
 <%- include('./partials/footer')%>

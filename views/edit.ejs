@@ -4,46 +4,44 @@
         <h1>Edit Data</h1>
         <form action="" method="post">
             <div class="form-group row">
-                <label class="col-sm-2 col-form-label">ID</label>
-                <div class="col-sm-10">
-                    <input type="text" class="form-control" name="id" value="<%= Number(id) + 1%>" readonly>
-                </div>
-            </div>
-            <div class="form-group row">
                 <label class="col-sm-2 col-form-label">String</label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" name="string" placeholder="String"
-                        value="<%= item.string%>">
+                    <input type="text" class="form-control" name="string" id="string" placeholder="String"
+                    value="<%= row.string%>" >
                 </div>
             </div>
             <div class="form-group row">
-                <label class="col-sm-2 col-form-label">Integer</label>
+                <label class="col-sm-2 col-form-label" >Integer</label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" name="integer" placeholder="Integer"
-                        value="<%= item.integer%>">
+                    <input type="text" class="form-control" name="integer" id="integer" placeholder="Integer"
+                        value="<%= row.integer%>">
                 </div>
             </div>
             <div class="form-group row">
                 <label class="col-sm-2 col-form-label">Float</label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" name="float" placeholder="Float"
-                        value="<%= item.float%>">
+                    <input type="text" class="form-control" name="float" id="float" placeholder="Float"
+                        value="<%= row.float%>">
                 </div>
             </div>
             <div class="form-group row">
                 <label class="col-sm-2 col-form-label">Date</label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" name="date" placeholder="end date"
-                        value="<%= item.date %>">
+                    <input type="date" class="form-control" name="date" id="date" placeholder="Date"
+                        value="<%= row.date %>">
                 </div>
             </div>
             <div class="form-group row">
                 <label class="col-sm-2 col-form-label">Boolean</label>
                 <div class="col-sm-10">
-                    <select name="boolean" class="custom-select mr-sm-2">
-                        <option value="<%= item.boolean %>" selected disabled><%= item.boolean %></option>
-                        <option value="True">True</option>
-                        <option value="False">False</option>
+                    <select name="boolean" id="boolean" class="custom-select mr-sm-2">
+                        <% if(row.boolean == true) {%>
+                            <option class="form-control" value="true">True</option>
+                            <option class="form-control" value="false">False</option>
+                            <%} else {%>
+                            <option class="form-control" value="false">False</option>
+                            <option class="form-control" value="true">True</option>
+                            <% }%>
                     </select>
                 </div>
             </div>
@@ -56,7 +54,7 @@
         </form>
 
         <div class="back">
-            <a href="/" class="btn btn-success">kembali</a>
+            <a href="/" class="btn btn-success">Back</a>
         </div>
 
     </div>
